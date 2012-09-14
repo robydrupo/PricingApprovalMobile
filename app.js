@@ -38,10 +38,9 @@ Ext.application({
             items: [{
                 xtype: 'lineslist',
                 padding: 20,
-				border: 1,
-				flex: 1
-            },
-            {
+                border: 1,
+                flex: 1
+            }, {
                 title: 'Form Details',
                 iconCls: 'user',
                 xtype: 'formpanel',
@@ -54,8 +53,11 @@ Ext.application({
                     ui: 'confirm',
                     padding: 10,
                     handler: function() {
-                        this.up('formpanel').submit();
-                    }
+                         //Ext.Msg.alert('Selected!', 'You clicked  Approve button');
+                        var r = Ext.StoreMgr.get('Lines').findRecord('productName',this.up('formpanel').items.items[1].items.items[0]._value);
+                        Ext.StoreMgr.get('Lines').remove(r);
+                        
+                    }                    
                 }, {
                     xtype: 'fieldset',
                     title: '',

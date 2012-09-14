@@ -1,0 +1,13 @@
+Ext.create('Ext.List', {
+    store: {
+        fields: ['name'],
+        data: [
+            {name: 'Cowper'},
+            {name: 'Everett'},
+            {name: 'University'},
+            {name: 'Forest'}
+        ]
+    },
+
+    itemTpl: '{name}'
+});

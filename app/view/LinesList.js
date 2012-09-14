@@ -5,9 +5,14 @@ Ext.define('PricingApprovalMobile.view.LinesList', {
     
     config: {
         title: 'Lines awaiting approval',
-        grouped: true,
+        //grouped: true,
         itemTpl: '{productName}',
-        store: 'Lines',
-        onItemDisclosure: true
+        store: 'Lines'
+        //onItemDisclosure: true
+    },
+    listeners: {
+        select: function(view, record) {
+            Ext.Msg.alert('Selected!', 'You selected ' + record.get('productName'));
+        }
     }
 });

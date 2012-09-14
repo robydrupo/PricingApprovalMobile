@@ -37,9 +37,10 @@ Ext.application({
             layout: 'hbox',
             items: [{
                 xtype: 'lineslist',
-                flex: 1
+                padding: 20,
+				border: 1,
+				flex: 1
             },
-
             {
                 title: 'Form Details',
                 iconCls: 'user',

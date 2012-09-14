@@ -2,10 +2,13 @@ Ext.application({
     name: 'PricingApprovalMobile',
 
     requires: [
-        'Ext.MessageBox'
+        'Ext.MessageBox',
+		'PricingApprovalMobile.view.LinesList',
+		'PricingApprovalMobile.view.LineDetail'
     ],
 
-    views: ['Main'],
+    stores: ['Lines'],
+    models: ['Line'],
 
     icon: {
         '57': 'resources/icons/Icon.png',
@@ -32,20 +35,18 @@ Ext.application({
 
         // Initialize the main view
         //Ext.Viewport.add(Ext.create('PricingApprovalMobile.view.Main'));
-		
+			
 		Ext.create('Ext.Container', {
 		    fullscreen: true,
 		    layout: 'hbox',
 		    items: [
 		        {
-		            html: 'message list',
-		            style: 'background-color: #5E99CC;',
+		            xtype: 'lineslist',
 		            flex: 1
 		        },
 		        {
-		            html: 'message preview',
-		            style: 'background-color: #759E60;',
-		            flex: 2
+		            xtype: 'linedetail',
+					flex: 2
 		        }
 		    ]
 		});

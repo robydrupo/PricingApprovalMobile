@@ -38,7 +38,9 @@ Ext.application({
             items: [{
                 xtype: 'lineslist',
                 flex: 1
-            }, {
+            },
+
+            {
                 title: 'Form Details',
                 iconCls: 'user',
                 xtype: 'formpanel',
@@ -46,6 +48,14 @@ Ext.application({
                 layout: 'vbox',
                 flex: 2,
                 items: [{
+                    xtype: 'button',
+                    text: 'Approve Line',
+                    ui: 'confirm',
+                    padding: 10,
+                    handler: function() {
+                        this.up('formpanel').submit();
+                    }
+                }, {
                     xtype: 'fieldset',
                     title: '',
                     items: [{
@@ -97,14 +107,6 @@ Ext.application({
                         label: 'Max. Expected Value',
                         name: 'maxExpectedValue'
                     }]
-                }, {
-                    xtype: 'button',
-                    text: 'Approve Line',
-                    ui: 'confirm',
-                    padding: 10,
-                    handler: function() {
-                        this.up('formpanel').submit();
-                    }
                 }, {
                     xtype: 'button',
                     text: 'Submit Back',

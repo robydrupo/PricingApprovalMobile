@@ -5,6 +5,7 @@ Ext.application({
 
     stores: ['Lines'],
     models: ['Line'],
+    controllers: ['Main'],
 
     icon: {
         '57': 'resources/icons/Icon.png',
@@ -25,21 +26,20 @@ Ext.application({
     },
 
 
-    launch: function () {
+    launch: function() {
         // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();
 
         // Initialize the main view
         //Ext.Viewport.add(Ext.create('PricingApprovalMobile.view.Main'));
-
-        Ext.Viewport.add(Ext.create('Ext.Panel', {
+        mainForm = Ext.create('Ext.Panel', {
             fullscreen: true,
             layout: 'hbox',
             items: [{
                 xtype: 'lineslist',
                 flex: 1
             }, {
-                title: 'Line Details',
+                title: 'Form Details',
                 iconCls: 'user',
                 xtype: 'formpanel',
                 url: 'contact.php',
@@ -50,68 +50,81 @@ Ext.application({
                     title: '',
                     items: [{
                         xtype: 'textfield',
+                        name: 'productName',
                         label: 'Name'
-                    },{
-	                    xtype: 'textfield',
-	                    label: 'Rate Type'
-	                },{
-		                xtype: 'textfield',
-		                label: 'Value Type'
-		            },
-		 			{
-                        xtype: 'textfield',
-                        label: 'Start Date'
                     }, {
                         xtype: 'textfield',
-                        label: 'End Date'
+                        label: 'Rate Type',
+                        name: 'rateType'
                     }, {
-	                    xtype: 'numberfield',
-	                    label: 'Base Rate'
-	                },{
-		                xtype: 'numberfield',
-		                label: 'List Rate'
-		            }, {
-		                xtype: 'numberfield',
-		                label: 'Sold Rate'
-		            },{
-			            xtype: 'numberfield',
-			            label: 'Value'
-			        }	,{
-			                xtype: 'numberfield',
-			                label: 'Recommended Rate'
-			            }, {
-			                xtype: 'numberfield',
-			                label: 'Max. Expected Monthly Value'
-			            },{
-				            xtype: 'numberfield',
-				            label: 'Max. Expected Value'
-				        }]
+                        xtype: 'textfield',
+                        label: 'Value Type',
+                        name: 'valueType'
+                    }, {
+                        xtype: 'textfield',
+                        label: 'Start Date',
+                        name: 'startDate'
+                    }, {
+                        xtype: 'textfield',
+                        label: 'End Date',
+                        name: 'endDate'
+                    }, {
+                        xtype: 'numberfield',
+                        label: 'Base Rate',
+                        name: 'baseRate'
+                    }, {
+                        xtype: 'numberfield',
+                        label: 'List Rate',
+                        name: 'listRate'
+                    }, {
+                        xtype: 'numberfield',
+                        label: 'Sold Rate',
+                        name: 'soldRate'
+                    }, {
+                        xtype: 'numberfield',
+                        label: 'Value',
+                        name: 'value'
+                    }, {
+                        xtype: 'numberfield',
+                        label: 'Recommended Rate',
+                        name: 'recommendedRate'
+                    }, {
+                        xtype: 'numberfield',
+                        label: 'Max. Expected Monthly Value',
+                        name: 'maxExpectedMonthlyValue'
+                    }, {
+                        xtype: 'numberfield',
+                        label: 'Max. Expected Value',
+                        name: 'maxExpectedValue'
+                    }]
                 }, {
                     xtype: 'button',
                     text: 'Approve Line',
                     ui: 'confirm',
-					padding: 10,
-                    handler: function () {
+                    padding: 10,
+                    handler: function() {
                         this.up('formpanel').submit();
                     }
-                }	, {
-	                    xtype: 'button',
-	                    text: 'Submit Back',
-	                    ui: 'decline',
-						padding: 10,
-	                    handler: function () {
-	                        this.up('formpanel').submit();
-	                    }
-	                }]
+                }, {
+                    xtype: 'button',
+                    text: 'Submit Back',
+                    ui: 'decline',
+                    padding: 10,
+                    handler: function() {
+                        this.up('formpanel').submit();
+                    }
+                }]
             }]
-        }));
+        });
+
+        Ext.Viewport.add(mainForm);
 
     },
 
-    onUpdated: function () {
+    onUpdated: function() {
         Ext.Msg.confirm("Application Update", "This application has just successfully been updated to the latest version. Reload now?",
 
-        function (buttonId) {
+        function(buttonId) {
             if (buttonId === 'yes') {
                 window.location.reload();
             }

@@ -1,4 +1,4 @@
-Ext.define('Sencha.controller.Main', {
+Ext.define('PricingApprovalMobile.controller.Main', {
     extend: 'Ext.app.Controller',
 
     config: {
@@ -7,17 +7,23 @@ Ext.define('Sencha.controller.Main', {
         },
         control: {
             'lineslist': {
-                disclose: 'showDetail'
+                select: 'showDetail'
             }
         }
     },
 
     showDetail: function(list, record) {
-        this.getMain().push({
+
+
+        console.log(mainForm);
+        mainForm.items.items[1].setValues(record.getData());
+        
+        /*this.getMain().push({
             xtype: 'linedetails',
             title: record.fullName(),
             data: record.getData()
         })
+*/
     }
 
 });

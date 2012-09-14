@@ -5,9 +5,7 @@ Ext.define('PricingApprovalMobile.view.LinesList', {
     
     config: {
         title: 'Lines awaiting approval',
-        grouped: true,
         itemTpl: '{productName}',
-        store: 'Lines',
-        onItemDisclosure: true
+        store: 'Lines'
     }
 });

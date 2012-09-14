@@ -1,14 +1,6 @@
 Ext.define('PricingApprovalMobile.model.Line', {
     extend: 'Ext.data.Model',
     config: {
-        fields: ['productName']
-    },
-
-    fullName: function() {
-        var d = this.data,
-        names = [
-            d.productName
-        ];
-        return names.join(" ");
+        fields: ['productName', 'rateType', 'valueType', 'startDate', 'endDate', 'baseRate', 'listRate', 'soldRate', 'value', 'recommendedRate', 'maxExpectedMonthlyValue', 'maxExpectedValue' ]
     }
 });
